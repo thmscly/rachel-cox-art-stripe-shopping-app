@@ -6,12 +6,12 @@ require 'vendor/autoload.php';
 
 header('Content-Type: application/json');
 
-$YOUR_DOMAIN = 'http://localhost:4242/public';
+$YOUR_DOMAIN = $_ENV['DOMAIN'];
 
 $checkout_session = \Stripe\Checkout\Session::create([
   'line_items' => [[
     # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-    'price' => '{{PRICE_ID}}',
+    'price' => 'price_1KtG5rCyDKFdIKJoddLhKESf',
     'quantity' => 1,
   ]],
   'mode' => 'payment',

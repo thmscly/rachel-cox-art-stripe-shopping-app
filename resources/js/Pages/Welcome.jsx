@@ -6,8 +6,12 @@ export default function Welcome(props) {
     return (
         <>
             <Head title="Welcome" />
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"></div>
-            <ProductDisplay />
+            <div className="m-5">
+                <div className="items-center text-xl">
+                    <h1>Rachel Cox Art</h1>
+                </div>
+                <ProductDisplay />
+            </div>
         </>
     );
 }

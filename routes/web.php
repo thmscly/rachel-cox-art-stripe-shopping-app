@@ -3,7 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\ProductController;;
+use App\Http\Controllers\ProductController;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/products', [ProductController::class, 'index']);
+
+Route::get('/product-checkout', function (Request $request) {
+    return $request->user()->checkout(price_1KtG5rCyDKFdIKJoddLhKESf);
+});
+
+Route::get('/howdy', function () {
+    return Inertia::render('Howdy');
+});
 
 require __DIR__.'/auth.php';
