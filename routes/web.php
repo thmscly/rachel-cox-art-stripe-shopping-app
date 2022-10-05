@@ -30,6 +30,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/products', [ProductController::class, 'index']);
 
+
+//route to trigger the Stripe Checkout session
 Route::get('/create-checkout-session', function (Request $request) {
     return $request->user()->checkout('price_1KtG5rCyDKFdIKJoddLhKESf');
 });

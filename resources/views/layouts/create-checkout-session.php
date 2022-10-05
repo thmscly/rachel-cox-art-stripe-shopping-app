@@ -11,6 +11,7 @@ $YOUR_DOMAIN = $_ENV['DOMAIN'];
 $stripe->checkout->sessions->create([
   'success_url' => 'https://example.com/success',
   'cancel_url' => 'https://example.com/cancel',
+  //this is where specificity for the Product-specific Price Id (default_price) should be handled
   'line_items' => [
     [
       'price_data' => [
