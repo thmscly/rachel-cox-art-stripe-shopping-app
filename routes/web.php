@@ -32,8 +32,9 @@ Route::get('/products', [ProductController::class, 'index']);
 
 
 //route to trigger the Stripe Checkout session (create-checkout-session.php)
-Route::get('/create-checkout-session', function (Request $request) {
+Route::middleware('auth:sanctum')->post('/create-checkout-session', function (Request $request) {
     return $request->user()->checkout('price_1KtG5rCyDKFdIKJoddLhKESf');
+    
 });
 
 Route::get('/howdy', function () {

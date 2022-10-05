@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 
 header('Content-Type: application/json');
 
-$YOUR_DOMAIN = $_ENV['DOMAIN'];
+$YOUR_DOMAIN = $_ENV['APP_URL'];
 
 $stripe->checkout->sessions->create([
   'success_url' => 'https://example.com/success',
@@ -23,9 +23,8 @@ $stripe->checkout->sessions->create([
     ],
   ],
   'mode' => 'payment',
-])
+]])
+
 
 header("HTTP/1.1 303 See Other");
 header("Location: " . $checkout_session->url);
-
-checkou
