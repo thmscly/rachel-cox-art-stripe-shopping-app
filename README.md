@@ -1,6 +1,6 @@
 This is an e-commerce web app to showcase and sell the artwork of Rachel Cox.
 
-It's built using Laravel 9 as a back-end structure wit React on the client side.
+It's built using Laravel 9 as a back-end structure with React on the client side.
 
 It's also utilizing Stripe as a payment processor.
 
