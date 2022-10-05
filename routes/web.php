@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
+use app\Models\User;
+use Laravel\Cashier\Checkout;
 
 
 /*
@@ -28,8 +30,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/products', [ProductController::class, 'index']);
 
-Route::get('/product-checkout', function (Request $request) {
-    return $request->user()->checkout(price_1KtG5rCyDKFdIKJoddLhKESf);
+Route::get('/create-checkout-session', function (Request $request) {
+    return $request->user()->checkout('price_1KtG5rCyDKFdIKJoddLhKESf');
 });
 
 Route::get('/howdy', function () {
