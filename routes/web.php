@@ -10,7 +10,7 @@ use Laravel\Cashier\Checkout;
 use App\Http\Controllers\CheckoutController;
 use Stripe\Stripe;
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -39,23 +39,10 @@ Route::get('/products', [ProductController::class, 'index']);
 //     return;
 // });
 
-Route::post('/create-checkout-session', $stripe->checkout->sessions->create([
-        'success_url' => 'https://example.com/success',
-        'cancel_url' => 'https://example.com/cancel',
-  //this is where specificity for the Product-specific Price Id (default_price) should be handled
-        'line_items' => [
-          [
-            'price_data' => [
-              'currency' => 'usd',
-              'product_data' => [
-                'name' => $name,
-              ],'unit_amount' => $amount,
-            'quantity' => 2,
-          ],
-        ],
-  'mode' => 'payment',
-]],
-header('Location:'.$checkout_session->url,true,303)));
+Route::post('/create-checkout-session', function (Request $request) {
+    return $request->user()->checkout('price_1KtG5ECyDKFdIKJoIy13F7YU');
+});
+// header('Location:'.$checkout_session->url,true,303)}));
 
 
 Route::get('/howdy', function () {
@@ -63,3 +50,6 @@ Route::get('/howdy', function () {
 });
 
 require __DIR__.'/auth.php';
+
+require __DIR__.'/../vendor/autoload.php';
+
