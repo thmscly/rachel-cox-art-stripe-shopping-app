@@ -31,7 +31,7 @@ function ProductDisplay() {
                             {/* add onsubmit to trigger setting env PRICE to product button's price.id */}
                             <form
                                 className="text-white font-bold border py-2 px-3 text-grey-darkest text-center m-3 rounded-lg bg-gradient-to-br from-blue-400 to-emerald-400 hover:opacity-80"
-                                action="http://localhost:8000/create-checkout-session"
+                                action="/create-checkout-session"
                                 method="POST"
                             >
                                 <button

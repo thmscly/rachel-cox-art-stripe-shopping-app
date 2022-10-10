@@ -7,7 +7,10 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use app\Models\User;
 use Laravel\Cashier\Checkout;
+use App\Http\Controllers\CheckoutController;
+use Stripe\Stripe;
 
+require '../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +35,27 @@ Route::get('/products', [ProductController::class, 'index']);
 
 
 //route to trigger the Stripe Checkout session (create-checkout-session.php)
-Route::post('/create-checkout-session', function () {
-    return '/create-checkout-session.php';
-});
+// Route::post('/create-checkout-session', function () {
+//     return;
+// });
+
+Route::post('/create-checkout-session', $stripe->checkout->sessions->create([
+        'success_url' => 'https://example.com/success',
+        'cancel_url' => 'https://example.com/cancel',
+  //this is where specificity for the Product-specific Price Id (default_price) should be handled
+        'line_items' => [
+          [
+            'price_data' => [
+              'currency' => 'usd',
+              'product_data' => [
+                'name' => $name,
+              ],'unit_amount' => $amount,
+            'quantity' => 2,
+          ],
+        ],
+  'mode' => 'payment',
+]],
+header('Location:'.$checkout_session->url,true,303)));
 
 
 Route::get('/howdy', function () {
