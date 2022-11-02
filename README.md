@@ -6,8 +6,8 @@ It's also utilizing Stripe as a payment processor.
 
 To run:
 
-In 2 separate terminals:
-Terminal 1: `php arisan serve`
+In 2 separate terminals:<br>
+Terminal 1: `php arisan serve`<br>
 Terminal 2: `npm install && npm run dev`
 
 Obviously, some Stripe information is sensitive, so will be housed in a gitignored .env file, but, as an in-progress portfolio web app, PRs are welcome.
